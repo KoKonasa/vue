@@ -1,0 +1,65 @@
+@charset "UTF-8";
+html{
+    font-size: 30px;
+    font-family: 'Helvetica','Arial','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'sans-serif;
+    background: -moz-linear-gradient(top, skyblue, white);
+    background: -webkit-linear-gradient(top, skyblue, white);
+    background: linear-gradient(to bottom,  skyblue, white);
+}
+  
+
+h1{
+    font-size: 60px;
+    font-family: 'Fuzzy Bubbles', cursive;
+    text-align: center;
+    border-bottom: solid 3px black;
+}
+
+h2{
+    font-size: 40px;
+    font-family: 'Fuzzy Bubbles', cursive;
+    padding: 0.25em 0.5em;
+    color: black;
+    background: transparent;
+    border-left: solid 5px lightcoral;
+}
+
+
+#header ul {
+    list-style-type: none; 
+    text-align:center; 
+
+  }
+  
+#header ul li { 
+    display: inline-block;
+    width: 100px;
+    padding: 10px 0;
+    margin: 10px 0;
+    vertical-align: middle;
+    background: greenyellow;
+    font-weight: bold;
+    border-radius:20px;
+    color:white;
+  }
+
+body {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 30px 30px 30px;
+    border: 3px;
+  }
+
+li {
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+
+.button {
+  background-color:aquamarine;
+  height: 70px;
+  width: 70px;
+  border-radius:50px;
+}
+

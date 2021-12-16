@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Test Page</title>
+    <meta name="description" content="Vue.js3のテストページ" />
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+    <link rel="icon" type="image/x-icon" href="image/favicon.ico">
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+
+    <h1>Vue.js3 Sample</h1>
+
+    <div id="header">
+    <ul>
+      <a href="#counter"><li>Counter</li></a>
+      <a href="#text"><li>Text</li></a>
+      <a href="#total"><li>Total</li></a>
+      <a href="#others"><li>Others</li></a>
+    </ul>
+    </div>
+
+    <a id="counter">
+    <h2>Counter</h2>
+    </a>
+    <div id="bind-attribute">
+      <span v-bind>
+        You loaded this page on {{loadtime}}.<br>
+        You see this page for {{counter}}s.<br>
+        Now Date: {{date + new Date().toLocaleString()}}
+      </span>
+    </div>
+
+    <a id="text">
+    <h2>Text</h2>
+    </a>
+    <div id="two-way-binding">
+      <p v-bind>{{ message }}</p><br>
+      <button v-on:click="repeat" class="button">Repeat</button>
+      <button v-on:click="low" class="button">Lower</button>
+      <button v-on:click="up" class="button">Upper</button>
+      <button v-on:click="dlete" class="button">Delete</button><br>
+      <input v-model="message" />
+    </div>
+
+    <a id="total">
+    <h2>Total</h2>
+    </a>
+    <div id="app">
+    
+      <math></math>
+    </div>
+
+    <a id="others">
+    <h2>Others</h2>
+    </a>
+
+    <script language="javascript" type="text/javascript">
+
+      const AttributeBinding = {
+       data() {
+        return {
+
+          loadtime: new Date().toLocaleString(),
+          counter: 0,
+          date: '2021/'
+          }
+        },
+          mounted(){
+          setInterval(() => {
+            this.counter++
+            this.date=''
+          }, 1000)
+        }
+      }
+    Vue.createApp(AttributeBinding).mount('#bind-attribute')
+
+    const TwoWayBinding = {
+      data() {
+        return {
+          message: 'Vu3'
+        }
+      }, 
+      methods: {
+      repeat() {
+      this.message = this.message.repeat(2)      
+      },
+      low(){
+      this.message = this.message.toLowerCase() 
+      },
+      up(){
+        this.message = this.message.toUpperCase()  
+      },
+      dlete(){
+        this.message =''
+      }
+     }
+    }
+    Vue.createApp(TwoWayBinding).mount('#two-way-binding')
+
+    const tot = {
+    data() {
+      return {
+      }
+     }
+    }
+    let app = Vue.createApp(tot)
+
+    app.component('math', {
+    data() {
+      return {
+        n:0,
+        message:'Type a natural number.',
+        msg: ''
+      }
+    },
+    methods:{
+      math() {
+        var total = 0
+        var totall =1
+        var i
+        for (i = 1; i <=this.n;i++){
+          total += i
+          totall *=i
+        }
+        this.message = "summation: " + total
+        this.msg ="accumulation: " +totall
+      }
+    },
+    template: `<div>
+      <p>{{message}}</p>
+      <p>{{msg}}</p>
+      <div>
+        <input type="number"  v-on:input="math" v-model="n">
+        </div>
+      </div>`
+    })
+    app.mount('#app')
+
+    </script>
+  </body>
+</html>
